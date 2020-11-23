@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/AndroidLibraies" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/AndroidWeatherApp" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/QA" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/SearchingRecyclerView" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/TabCustomization" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/TakeawayApp" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/WeatherCheck" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/covid_saathi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/job_application" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/libraries_illustration" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/libraries_illustration/ProviderFlutterIllustration" vcs="Git" />
+  </component>
+</project>
