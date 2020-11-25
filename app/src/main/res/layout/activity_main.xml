@@ -10,4 +10,10 @@
         android:layout_alignParentBottom="true"
         android:layout_height="fill_parent">
     </VideoView>
+    <Button
+        android:id="@+id/btnCaptureVideo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Capture Video"
+        android:gravity="center"/>
 </RelativeLayout>
