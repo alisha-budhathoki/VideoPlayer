@@ -17,7 +17,7 @@ import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
     VideoView videoView;
-    Button btnRecord;
+    Button btnRecord, btnCustomCapture;
     private final int VIDEO_REQUEST_CODE = 101;
 
     @Override
@@ -25,12 +25,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         btnRecord = findViewById(R.id.btnCaptureVideo);
+        btnCustomCapture = findViewById(R.id.btnCaptureCustomVideo);
         videoView = findViewById(R.id.myvideoview);
         String videoPath = "android.resource://" + getApplicationContext().getPackageName() + "/" + R.raw.nextt_video;
         Uri uri = Uri.parse(videoPath);
         videoView.setVideoURI(uri);
         videoView.start();
         System.out.println("dnjdn");
+        btnCustomCapture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("hvhhhv");
+                Intent intent = new Intent(MainActivity.this, CustomCameraActivity.class);
+                startActivity(intent);
+            }
+        });
         btnRecord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,14 +81,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         System.out.println("hdshudsh");
         super.onActivityResult(requestCode, resultCode, data);
-        System.out.println("dsnkjjsdb"+ requestCode);
+        System.out.println("dsnkjjsdb" + requestCode);
         if (requestCode == VIDEO_REQUEST_CODE) {
-            System.out.println("dnsjnsj"+ resultCode);
+            System.out.println("dnsjnsj" + resultCode);
             if (resultCode == RESULT_OK) {
                 //            Successfuly capture the video
                 Toast.makeText(getApplicationContext(), "Video successfully Recorded", Toast.LENGTH_LONG).show();
-            } else
-                {
+            } else {
                 Toast.makeText(getApplicationContext(), "Video capture failed", Toast.LENGTH_LONG).show();
             }
         }
@@ -87,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
 
     public File getFielPath() {
         System.out.println("skjsddf");
-        File folder = new File(getApplicationContext().getExternalFilesDir(null),"jasa");
+        File folder = new File(getApplicationContext().getExternalFilesDir(null), "jasa");
 //        File folder = new File(getApplicationContext().getExternalFilesDir(null),"myfile.mp4");        System.out.println("njsjjds"+ this.getFilesDir().getPath());
 //        for saving app file
         if (folder.exists()) {

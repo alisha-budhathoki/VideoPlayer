@@ -16,4 +16,13 @@
         android:layout_height="wrap_content"
         android:text="Capture Video"
         android:gravity="center"/>
+    <Button
+        android:id="@+id/btnCaptureCustomVideo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Capture Custom Video"
+        android:layout_below="@+id/btnCaptureVideo"
+        android:layout_margin="20dp"
+        android:gravity="center"/>
+
 </RelativeLayout>
