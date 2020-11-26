@@ -18,7 +18,7 @@ import java.io.File;
 public class MainActivity extends AppCompatActivity {
     VideoView videoView;
     Button btnRecord;
-    private final int VIDEO_REQUEST_CODE = 100;
+    private final int VIDEO_REQUEST_CODE = 101;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 //        Now converting this file to uri
         Uri video_uri = Uri.fromFile(video_file);
 //        Now adding this file path into the intent object
-        camera_intent.putExtra(MediaStore.EXTRA_OUTPUT, video_uri);
+        camera_intent.putExtra(MediaStore.ACTION_VIDEO_CAPTURE, video_uri);
 //        specifying quality for video
         camera_intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1); //1 specifies the highest quality
         startActivityForResult(camera_intent, VIDEO_REQUEST_CODE);
@@ -87,7 +87,8 @@ public class MainActivity extends AppCompatActivity {
 
     public File getFielPath() {
         System.out.println("skjsddf");
-        File folder = new File(getApplicationContext().getExternalFilesDir(null),"myfile.mp4");        System.out.println("njsjjds"+ this.getFilesDir().getPath());
+        File folder = new File(getApplicationContext().getExternalFilesDir(null),"jasa");
+//        File folder = new File(getApplicationContext().getExternalFilesDir(null),"myfile.mp4");        System.out.println("njsjjds"+ this.getFilesDir().getPath());
 //        for saving app file
         if (folder.exists()) {
             folder.mkdir();
