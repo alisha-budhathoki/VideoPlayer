@@ -4,17 +4,21 @@ import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.hardware.Camera;
+import android.media.CamcorderProfile;
 import android.media.MediaRecorder;
 import android.os.Environment;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
 
 public class VideoCapture extends SurfaceView implements SurfaceHolder.Callback{
     private MediaRecorder recorder;
     private SurfaceHolder holder;
     public Context context;
     private Camera camera;
+    Boolean isStarted;
+
     public static String videoPath = Environment.getExternalStorageDirectory()
             .getPath() +"/YOUR_VIDEO.mp4";
 
@@ -37,14 +41,17 @@ public class VideoCapture extends SurfaceView implements SurfaceHolder.Callback{
     @SuppressLint("NewApi")
     public void init() {
         try {
+            System.out.println("dsjd"+ videoPath);
             recorder = new MediaRecorder();
             holder = getHolder();
             holder.addCallback(this);
             holder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
-            camera = getCameraInstance();
+            camera = Camera.open();
             if(android.os.Build.VERSION.SDK_INT > 7)
                 camera.setDisplayOrientation(90);
+            System.out.println("sdnjsd");
             camera.unlock();
+            System.out.println("camera unlocked");
             recorder.setCamera(camera);
             recorder.setVideoSource(MediaRecorder.VideoSource.DEFAULT);
             recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
@@ -59,19 +66,52 @@ public class VideoCapture extends SurfaceView implements SurfaceHolder.Callback{
     }
 
     public void surfaceCreated(SurfaceHolder mHolder) {
+//        int cameraId = -1;
+//        for(int i=0;i<Camera.getNumberOfCameras();i++){
+//            Camera.CameraInfo info = new Camera.CameraInfo();
+//            Camera.getCameraInfo(cameraId,info);
+//            if(info.facing== Camera.CameraInfo.CAMERA_FACING_FRONT){
+//                cameraId = i;
+//                break;
+//            }
+//        }
+//        camera = Camera.open(cameraId);
         try {
+            System.out.println("dsnjbd");
+//            recorder.setProfile(CamcorderProfile.get(-1,CamcorderProfile.QUALITY_HIGH));
             recorder.setPreviewDisplay(mHolder.getSurface());
-            recorder.prepare();
-            recorder.start();
+//            recorder.start();
+            System.out.println("xnsbh");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public void stopCapturingVideo() {
+        if (isStarted == true) {
+            System.out.println("snidsid");
+            try {
+                recorder.stop();
+                System.out.println("See here");
+                camera.lock();
+                System.out.println("recording stopped");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else
+            System.out.println("knsjsbdjd");
+    }
+    public void startCapturingVideo() {
         try {
-            recorder.stop();
-            camera.lock();
+//            recorder.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_HIGH));
+//            recorder.setProfile(CamcorderProfile.get(CameraID, CamcorderProfile.QUALITY_HIGH));
+            recorder.setPreviewDisplay(holder.getSurface());
+            recorder.prepare();
+            recorder.start();
+            isStarted = true;
+            System.out.println("recording started");
         } catch (Exception e) {
             e.printStackTrace();
         }

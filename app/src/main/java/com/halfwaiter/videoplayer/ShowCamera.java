@@ -5,12 +5,14 @@ import android.content.res.Configuration;
 import android.hardware.Camera;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
 
 import java.io.IOException;
 
 public class ShowCamera extends SurfaceView implements SurfaceHolder.Callback {
     Camera camera;
     SurfaceHolder holder;
+
     public ShowCamera(Context context, Camera camera) {
         super(context);
         this.camera = camera;

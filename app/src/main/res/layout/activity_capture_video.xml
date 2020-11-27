@@ -14,11 +14,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="#00000000" />
-<Button
+<ToggleButton
     android:id="@+id/stop"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="Button"
+    android:textOff="Start Recording"
+    android:textOn="Stop Recording"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintTop_toTopOf="parent"
