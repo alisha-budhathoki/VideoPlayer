@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 System.out.println("hvhhhv");
-                Intent intent = new Intent(MainActivity.this, CustomCameraActivity.class);
+                Intent intent = new Intent(MainActivity.this, CaptureVideo.class);
                 startActivity(intent);
             }
         });
