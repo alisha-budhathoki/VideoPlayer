@@ -19,7 +19,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VideoPlayer">
-        <activity android:name=".CaptureVideo"></activity>
+        <activity android:name=".CaptureMyVideo"></activity>
+        <activity android:name=".MyCamera" />
+        <activity android:name=".CaptureVideo" />
         <activity android:name=".CustomCameraActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

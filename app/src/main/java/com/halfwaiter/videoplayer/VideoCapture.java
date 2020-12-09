@@ -12,7 +12,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 
-public class VideoCapture extends SurfaceView implements SurfaceHolder.Callback{
+public class VideoCapture extends SurfaceView implements SurfaceHolder.Callback {
     private MediaRecorder recorder;
     private SurfaceHolder holder;
     public Context context;
@@ -20,34 +20,38 @@ public class VideoCapture extends SurfaceView implements SurfaceHolder.Callback{
     Boolean isStarted;
 
     public static String videoPath = Environment.getExternalStorageDirectory()
-            .getPath() +"/YOUR_VIDEO.mp4";
+            .getPath() + "/YOUR_VIDEO.mp4";
 
     public VideoCapture(Context context) {
         super(context);
         this.context = context;
         init();
+        recorder.setPreviewDisplay(holder.getSurface());
+
     }
 
     public VideoCapture(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
+        recorder.setPreviewDisplay(holder.getSurface());
     }
 
     public VideoCapture(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init();
+        recorder.setPreviewDisplay(holder.getSurface());
     }
 
     @SuppressLint("NewApi")
     public void init() {
         try {
-            System.out.println("dsjd"+ videoPath);
+            System.out.println("dsjd" + videoPath);
             recorder = new MediaRecorder();
             holder = getHolder();
             holder.addCallback(this);
             holder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
             camera = Camera.open();
-            if(android.os.Build.VERSION.SDK_INT > 7)
+            if (android.os.Build.VERSION.SDK_INT > 7)
                 camera.setDisplayOrientation(90);
             System.out.println("sdnjsd");
             camera.unlock();
@@ -66,20 +70,11 @@ public class VideoCapture extends SurfaceView implements SurfaceHolder.Callback{
     }
 
     public void surfaceCreated(SurfaceHolder mHolder) {
-//        int cameraId = -1;
-//        for(int i=0;i<Camera.getNumberOfCameras();i++){
-//            Camera.CameraInfo info = new Camera.CameraInfo();
-//            Camera.getCameraInfo(cameraId,info);
-//            if(info.facing== Camera.CameraInfo.CAMERA_FACING_FRONT){
-//                cameraId = i;
-//                break;
-//            }
-//        }
-//        camera = Camera.open(cameraId);
+
         try {
             System.out.println("dsnjbd");
 //            recorder.setProfile(CamcorderProfile.get(-1,CamcorderProfile.QUALITY_HIGH));
-            recorder.setPreviewDisplay(mHolder.getSurface());
+//            recorder.setPreviewDisplay(mHolder.getSurface());
 //            recorder.start();
             System.out.println("xnsbh");
 
@@ -99,15 +94,12 @@ public class VideoCapture extends SurfaceView implements SurfaceHolder.Callback{
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
-        else
+        } else
             System.out.println("knsjsbdjd");
     }
+
     public void startCapturingVideo() {
         try {
-//            recorder.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_HIGH));
-//            recorder.setProfile(CamcorderProfile.get(CameraID, CamcorderProfile.QUALITY_HIGH));
-            recorder.setPreviewDisplay(holder.getSurface());
             recorder.prepare();
             recorder.start();
             isStarted = true;

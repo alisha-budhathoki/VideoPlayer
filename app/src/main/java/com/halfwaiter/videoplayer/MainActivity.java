@@ -10,6 +10,7 @@ import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
@@ -17,26 +18,44 @@ import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
     VideoView videoView;
-    Button btnRecord, btnCustomCapture;
+    Button btnRecord, btnCustomCapture, btnCapMyVideo;
+    TextView myCamera;
     private final int VIDEO_REQUEST_CODE = 101;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        myCamera = findViewById(R.id.txtMyCamera);
         btnRecord = findViewById(R.id.btnCaptureVideo);
         btnCustomCapture = findViewById(R.id.btnCaptureCustomVideo);
+        btnCapMyVideo = findViewById(R.id.capMyVideo);
         videoView = findViewById(R.id.myvideoview);
         String videoPath = "android.resource://" + getApplicationContext().getPackageName() + "/" + R.raw.nextt_video;
         Uri uri = Uri.parse(videoPath);
         videoView.setVideoURI(uri);
         videoView.start();
         System.out.println("dnjdn");
+        btnCapMyVideo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            Intent goIntent = new Intent(MainActivity.this, CaptureMyVideo.class);
+            startActivity(goIntent);
+            }
+        });
         btnCustomCapture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 System.out.println("hvhhhv");
                 Intent intent = new Intent(MainActivity.this, CaptureVideo.class);
+                startActivity(intent);
+            }
+        });
+        myCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("hvhhhv");
+                Intent intent = new Intent(MainActivity.this, MyCamera.class);
                 startActivity(intent);
             }
         });
