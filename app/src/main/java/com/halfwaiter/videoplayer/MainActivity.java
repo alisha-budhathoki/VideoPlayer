@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -123,5 +124,11 @@ public class MainActivity extends AppCompatActivity {
 //        For saving video file
         File video_file = new File("sample_video.mp4");
         return video_file;
+    }
+
+    public void auioPlay(View view) {
+        MediaPlayer mPlayer = MediaPlayer.create(this, R.raw.my_mp3);
+        mPlayer.start();
+
     }
 }

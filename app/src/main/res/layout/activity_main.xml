@@ -37,6 +37,16 @@
         android:gravity="center"
         android:text="Capture My Video" />
 
+    <Button
+        android:id="@+id/audioplayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/capMyVideo"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:onClick="auioPlay"
+        android:text="Audio player" />
+
     <TextView
         android:id="@+id/txtMyCamera"
         android:layout_width="wrap_content"
