@@ -9,7 +9,9 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <permission android:name="android.permission.MEDIA_CONTENT_CONTROL" />
+
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <uses-feature android:name="android.hardware.camera" />
@@ -21,7 +23,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VideoPlayer">
-        <activity android:name=".AudioPlayerActivity"></activity>
+        <activity android:name=".AudioActivity"></activity>
         <activity android:name=".CaptureMyVideo" />
         <activity android:name=".MyCamera" />
         <activity android:name=".CaptureVideo" />

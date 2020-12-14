@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,9 +14,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 import android.widget.VideoView;
 
 import java.io.File;
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
     VideoView videoView;
@@ -126,9 +129,43 @@ public class MainActivity extends AppCompatActivity {
         return video_file;
     }
 
-    public void auioPlay(View view) {
-        MediaPlayer mPlayer = MediaPlayer.create(this, R.raw.my_mp3);
-        mPlayer.start();
-
+    public void auioPlay(View view) throws IOException {
+        Intent intent = new Intent(this, AudioActivity.class);
+        startActivity(intent);
     }
+//        String url = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"; // your URL here
+//        MediaPlayer mPlayer = new MediaPlayer();
+//        mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+//        if (((ToggleButton) view).isChecked()) {
+//
+////        MediaPlayer mPlayer = MediaPlayer.create(this, R.raw.my_mp3);
+////        mPlayer.start();
+//
+//
+////        mPlayer.setDataSource(url);
+////        mPlayer.prepare(); // might take long! (for buffering, etc)
+////        mPlayer.start();
+//            try {
+//                System.out.println("mnkjsjs");
+//                mPlayer.setDataSource(url);
+//                mPlayer.prepareAsync(); // prepare async to not block main thread
+//            } catch (IOException e) {
+//                Toast.makeText(this, "mp3 not found", Toast.LENGTH_SHORT).show();
+//                e.printStackTrace();
+//            }
+//            mPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+//
+//                @Override
+//                public void onPrepared(MediaPlayer player) {
+//                    player.start();
+//                    System.out.println("mnsdds");
+//                }
+//
+//            });
+//        }
+//        else{
+//            System.out.println("jnsdjdsn");
+//            mPlayer.stop();
+//        }
+//    }
 }
