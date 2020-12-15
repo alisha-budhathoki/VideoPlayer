@@ -23,7 +23,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VideoPlayer">
-        <activity android:name=".AudioActivity"></activity>
+        <activity android:name=".ExoAudioActivity"></activity>
+        <activity android:name=".AudioActivity" />
         <activity android:name=".CaptureMyVideo" />
         <activity android:name=".MyCamera" />
         <activity android:name=".CaptureVideo" />

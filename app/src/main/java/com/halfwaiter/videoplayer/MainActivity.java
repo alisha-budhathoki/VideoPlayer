@@ -133,6 +133,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AudioActivity.class);
         startActivity(intent);
     }
+
+    public void exoAudioPlay(View view) {
+        Intent intent = new Intent(this, ExoAudioActivity.class);
+        startActivity(intent);
+    }
 //        String url = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"; // your URL here
 //        MediaPlayer mPlayer = new MediaPlayer();
 //        mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,7 +15,7 @@ import android.widget.Toast;
 
 public class AudioActivity extends AppCompatActivity {
     ImageView impPlayPause;
-    private TextView textCurrentTime, txtTotalDuration;
+    private TextView textCurrentTime, txtTotalDuration, txtSoundName;
     private SeekBar playerSeekbar;
     private MediaPlayer mediaPlayer;
     private Handler handler = new Handler();
@@ -29,6 +30,13 @@ public class AudioActivity extends AppCompatActivity {
         playerSeekbar = findViewById(R.id.play_seekbar);
         mediaPlayer = new MediaPlayer();
         playerSeekbar.setMax(100);
+        txtSoundName = findViewById(R.id.sound_name);
+        txtSoundName.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+        txtSoundName.setText("Text text text text");
+        txtSoundName.setSelected(true);
+        txtSoundName.setSingleLine(true);
+        txtSoundName.setSelected(true);
+
 
         impPlayPause.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +67,17 @@ public class AudioActivity extends AppCompatActivity {
             @Override
             public void onBufferingUpdate(MediaPlayer mp, int percent) {
                 playerSeekbar.setSecondaryProgress(percent);
+            }
+        });
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                playerSeekbar.setProgress(0);
+                impPlayPause.setImageResource(R.drawable.ic_baseline_play_circle_filled_24);
+                textCurrentTime.setText("0.00");
+                txtTotalDuration.setText("0.00");
+                mediaPlayer.reset();
+                prepareMediaPlayer();
             }
         });
     }

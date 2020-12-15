@@ -9,6 +9,19 @@
     android:orientation="vertical"
     tools:context=".AudioActivity">
 
+    <TextView
+        android:id="@+id/sound_name"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Sound Name ndjd ndjkdnn"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+
+
+
+        />
+
     <ImageView
         android:id="@+id/img_play_btn"
         android:layout_width="50dp"

@@ -47,6 +47,16 @@
         android:onClick="auioPlay"
         android:text="Audio player" />
 
+    <Button
+        android:id="@+id/exoAudio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/audioplayer"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:onClick="exoAudioPlay"
+        android:text="Exo Audio player" />
+
     <TextView
         android:id="@+id/txtMyCamera"
         android:layout_width="wrap_content"
